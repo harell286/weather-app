@@ -15,7 +15,14 @@ const get = ({ latitude = 0, longitude = 0 }, callback) => {
 			try {
 				const current = body.current;
 
+				var description="";
+
+				current.weather_descriptions.forEach((value) => {
+					description = description + value +  " " ;
+				})
+
 				callback(undefined, {
+					description,
 					temperature : current.temperature,
 					feelslike : current.feelslike,
 				})

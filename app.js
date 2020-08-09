@@ -51,13 +51,17 @@ app.get('/weather', (req, res) => {
 			return res.send({ error });
 		}
 
-		const forecastDetails = forecast.get({latitude, longitude}, (error, { temperature, feelslike } = {} ) => {
+		const forecastDetails = forecast.get({latitude, longitude}, (error, { temperature, feelslike, description } = {} ) => {
 			if (error) {
 				return res.send({ error });
 			}
 
+			if (description !== "") {
+				description = " It is " + description;
+			}
+
 			return res.send({
-				forecast : "It is currently " + temperature +" degrees in "+location+". It feels like " +feelslike+ " degrees out.",
+				forecast : "It is currently " + temperature +" degrees in "+location+"." +description,
 				location,
 				address : req.query.address,
 			});
