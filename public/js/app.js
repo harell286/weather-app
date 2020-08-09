@@ -9,7 +9,7 @@ button.on('click', function(e) {
 	if (input.val()) {
 		$(this).attr('disabled', true);
 
-		fetch('http://localhost:3000/weather?address='+input.val()).then((response) => {
+		fetch('/weather?address='+input.val()).then((response) => {
 			
 			const p = $(this).siblings().closest('p');
 			

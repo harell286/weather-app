@@ -12,6 +12,8 @@ const partialsPath = path.join(__dirname, 'templates/partials');
 
 const config = require('./src/config');
 
+const port = process.env.PORT || 3000;
+
 app.set('view engine', 'hbs');
 
 //Setting view folder
@@ -81,6 +83,6 @@ app.get('*', (req, res) => {
 	});
 });
 
-app.listen(config.port, () => {
-	console.log('Server is running.');
+app.listen(port, () => {
+	console.log('Server is running in port ' +port);
 })
